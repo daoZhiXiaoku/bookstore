@@ -3,8 +3,14 @@ from books.models import Books
 from books.enums import *
 from django.core.urlresolvers import reverse
 from django.core.paginator import Paginator
-
+from books.serializers import BooksSerializer
+from rest_framework import viewsets
+from rest_framework import mixins
 # Create your views here.
+
+class BooksListViewSet(viewsets.GenericViewSet,mixins.ListModelMixin,mixins.RetrieveModelMixin):
+    serializer_class = BooksSerializer
+    queryset = Books.objects.all()    
 
 def index(request):
     '''Show Index'''

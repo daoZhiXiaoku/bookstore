@@ -15,11 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from rest_framework.routers import DefaultRouter
+from books.views import BooksListViewSet
+
+router = DefaultRouter()
+
+router.register(r'books', BooksListViewSet, base_name='books')
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^users/', include('users.urls', namespace='users')), # 用户模块
     url(r'^', include('books.urls', namespace='books')), # 商品模块
+    url(r'^api/',include(router.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
 ]
 

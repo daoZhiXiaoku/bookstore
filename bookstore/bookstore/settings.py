@@ -39,10 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'books',
-    'tinymce',
+    'tinymce',#注册富文本编辑
+    'corsheaders',  # 配置忽略跨域请求
+    'rest_framework',#注册前后端分离框架django-rest-framework
 ]
 
+CORS_ORIGIN_ALLOW_ALL = True #配置忽略跨域请求
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',#配置忽略跨域请求
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
