@@ -18,7 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^user/', include('users.urls', namespace='user')), # 用户模块
+    url(r'^users/', include('users.urls', namespace='users')), # 用户模块
     url(r'^', include('books.urls', namespace='books')), # 商品模块
     url(r'^tinymce/', include('tinymce.urls')),
 ]
