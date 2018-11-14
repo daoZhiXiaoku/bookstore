@@ -53,9 +53,9 @@
 
 		<div class="r_wrap fr clearfix">
 			<div class="sort_bar">
-				<a href="/list/{{ type_id }}/1/" {% if sort == 'default' %}class="active"{% endif %}>默认</a>
-				<a href="/list/{{ type_id }}/1/?sort=price" {% if sort == 'price' %}class="active"{% endif %}>价格</a>
-				<a href="/list/{{ type_id }}/1/?sort=hot" {% if sort == 'hot' %}class="active"{% endif %}>人气</a>
+				<a href="/books/{{ type_id }}/1/" {% if sort == 'default' %}class="active"{% endif %}>默认</a>
+				<a href="{% url 'books:list' type_id=type_id page=1 %}?sort=price" {% if sort == 'price' %}class="active"{% endif %}>价格</a>
+				<a href="/books/{{ type_id }}/1/?sort=hot" {% if sort == 'hot' %}class="active"{% endif %}>人气</a>
 			</div>
 
 			<ul class="book_type_list clearfix">
@@ -74,17 +74,17 @@
 
 			<div class="pagenation">
                 {% if books_li.has_previous %}
-				    <a href="/list/{{ type_id }}/{{ books_li.previous_page_number }}/?sort={{ sort }}"><上一页</a>
+				    <a href="/books/{{ type_id }}/{{ books_li.previous_page_number }}/?sort={{ sort }}"><上一页</a>
                 {% endif %}
                 {% for pindex in pages %}
                     {% if pindex == books_li.number %}
-                        <a href="/list/{{ type_id }}/{{ pindex }}/?sort={{ sort }}" class="active">{{ pindex }}</a>
+                        <a href="/books/{{ type_id }}/{{ pindex }}/?sort={{ sort }}" class="active">{{ pindex }}</a>
                     {% else %}
-                        <a href="/list/{{ type_id }}/{{ pindex }}/?sort={{ sort }}">{{ pindex }}</a>
+                        <a href="/books/{{ type_id }}/{{ pindex }}/?sort={{ sort }}">{{ pindex }}</a>
                     {% endif %}
                 {% endfor %}
                 {% if books_li.has_next %}
-				    <a href="/list/{{ type_id }}/{{ books_li.next_page_number }}/?sort={{ sort }}">下一页></a>
+				    <a href="/books/{{ type_id }}/{{ books_li.next_page_number }}/?sort={{ sort }}">下一页></a>
                 {% endif %}
 			</div>
 		</div>
