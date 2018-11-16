@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'books',
+    'order',
     'tinymce',#注册富文本编辑
     'corsheaders',  # 配置忽略跨域请求
     'rest_framework',#注册前后端分离框架django-rest-framework
@@ -142,3 +143,17 @@ TINYMCE_DEFAULT_CONFIG = {
 
 # MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR,"static")
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "PASSWORD": ""
+        }
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"

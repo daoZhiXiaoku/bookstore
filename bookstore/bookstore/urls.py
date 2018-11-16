@@ -26,8 +26,10 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^user/', include('users.urls', namespace='user')), # 用户模块
     url(r'^', include('books.urls', namespace='books')), # 商品模块
-    url(r'^api/',include(router.urls)),
+    url(r'^api/',include(router.urls)), 
     url(r'^tinymce/', include('tinymce.urls')),
+    url(r'^cart/', include('cart.urls', namespace='cart')),
+    url(r'^order/', include('order.urls', namespace='order')), # 订单模块
 ]
 
 

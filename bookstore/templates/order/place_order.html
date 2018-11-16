@@ -93,7 +93,7 @@
                 'books_ids': books_ids,
                 'csrfmiddlewaretoken': csrf
             }
-            $.post('/order/commit/', params, function (data) {
+            $.post('{% url 'order:commit' %}', params, function (data) {
                 // 根据json进行处理
                 if (data.res == 6){
                     localStorage.setItem('order_finish',2);
